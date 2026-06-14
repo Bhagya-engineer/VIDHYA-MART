@@ -1,12 +1,12 @@
 import { Product, Testimonial } from './types';
 
 export const CATEGORIES = [
-  { id: 'books', name: 'Books', icon: 'BookOpen', image: '/src/assets/images/category_books_1781411276122.jpg' },
-  { id: 'notebooks', name: 'Notebooks', icon: 'Notebook', image: '/src/assets/images/category_notebooks_1781411292437.jpg' },
-  { id: 'stationery', name: 'Stationery', icon: 'PenTool', image: '/src/assets/images/category_stationery_1781411308697.jpg' },
-  { id: 'bags', name: 'School Bags', icon: 'ShoppingBag', image: '/src/assets/images/category_bags_1781411324982.jpg' },
-  { id: 'shoes', name: 'School Shoes', icon: 'Activity', image: '/src/assets/images/category_shoes_1781411340227.jpg' },
-  { id: 'essentials', name: 'Daily Essentials', icon: 'Utensils', image: '/src/assets/images/category_essentials_1781411358612.jpg' }
+  { id: 'books', name: 'Books', icon: 'BookOpen', image: '/images/category_books_1781411276122.jpg' },
+  { id: 'notebooks', name: 'Notebooks', icon: 'Notebook', image: '/images/category_notebooks_1781411292437.jpg' },
+  { id: 'stationery', name: 'Stationery', icon: 'PenTool', image: '/images/category_stationery_1781411308697.jpg' },
+  { id: 'bags', name: 'School Bags', icon: 'ShoppingBag', image: '/images/category_bags_1781411324982.jpg' },
+  { id: 'shoes', name: 'School Shoes', icon: 'Activity', image: '/images/category_shoes_1781411340227.jpg' },
+  { id: 'essentials', name: 'Daily Essentials', icon: 'Utensils', image: '/images/category_essentials_1781411358612.jpg' }
 ];
 
 export const PRODUCTS: Product[] = [
@@ -22,7 +22,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 340,
     specs: ['Language: English', 'Publisher: NCERT', 'Edition: 2026', 'Softcover'],
     description: 'The standard mathematics textbook for CBSE Class 10 students, covering topics from Algebra to Trigonometry thoroughly with exercises.',
-    image: '/src/assets/images/prod_math10_1781411610306.jpg'
+    image: '/images/prod_math10_1781411610306.jpg'
   },
   {
     id: 'b-class12-physics',
@@ -35,7 +35,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 180,
     specs: ['Language: English', 'Publisher: NCERT', 'Set of 2 Volumes', 'Paperback'],
     description: 'Comprehensive physics textbooks covering Electrostatics, Current Electricity, Magnetism, and modern physics for Class 12 Boards and competitive exams.',
-    image: '/src/assets/images/prod_physics12_1781412139712.jpg'
+    image: '/images/prod_physics12_1781412139712.jpg'
   },
   {
     id: 'b-class5-all',
@@ -61,7 +61,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 520,
     specs: ['Author: B.S. Grewal', 'Type: Reference Book', 'Pages: 1200+', 'Useful for: B.Tech / B.E. / B.Sc'],
     description: 'The ultimate textbook guide for engineering graduates covering advanced calculus, differential equations, and numerical analysis.',
-    image: '/src/assets/images/prod_bsgrewal_1781412172099.jpg'
+    image: '/images/prod_bsgrewal_1781412172099.jpg'
   },
   {
     id: 'b-comp-jee-hc-verma',
@@ -74,7 +74,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 1820,
     specs: ['Author: Dr. H.C. Verma', 'Set of 2 Books', 'Comprehensive theory and exercises', 'Must-have for IIT-JEE/NEET'],
     description: 'The most popular physics reference guide for JEE and competitive exam aspirants, focusing on building solid fundamentals.',
-    image: '/src/assets/images/prod_hcverma_1781411626440.jpg'
+    image: '/images/prod_hcverma_1781411626440.jpg'
   },
 
   // --- NOTEBOOKS ---
@@ -90,7 +90,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 1420,
     specs: ['Pages: 172 per book', 'Size: 27.2cm x 16.7cm', 'Paper quality: 57 GSM', 'Ruled, Softcover'],
     description: 'Super-smooth paper from ITC Classmate. Designed with premium cover art and dynamic trivia on back cover.',
-    image: '/src/assets/images/prod_notebooks_1781411639713.jpg'
+    image: '/images/prod_notebooks_1781411639713.jpg'
   },
   {
     id: 'n-navneet-practical-record',
@@ -104,7 +104,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 310,
     specs: ['Pages: 120', 'One-Side Blank / One-Side Ruled', 'Includes index and periodic table chart', 'Spiral Bound options available'],
     description: 'Perfect for Physics, Chemistry, and Biology laboratory reports. High quality paper prevents ink bleed.',
-    image: '/src/assets/images/prod_navneet_prac_1781412184787.jpg'
+    image: '/images/prod_navneet_prac_1781412184787.jpg'
   },
   {
     id: 'n-sundaram-kraft-pack4',
@@ -118,7 +118,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 125,
     specs: ['Size: A4', 'Pages: 120 per book', 'Square ruled for kids', 'Highly durable binding'],
     description: 'Ideal for junior class students practicing mathematics or handwriting. Eco-friendly elemental chlorine-free paper.',
-    image: '/src/assets/images/prod_sundaram_sq_1781412198583.jpg'
+    image: '/images/prod_sundaram_sq_1781412198583.jpg'
   },
 
   // --- STATIONERY - PENCILS & PENS ---
@@ -162,7 +162,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 2200,
     specs: ['Ink: Low-viscosity smart gel-feel technology', 'NIB size: 0.7mm', 'Colors: 5 Blue, 3 Black, 2 Red', 'Matt finish smart body'],
     description: 'Sleek style, featherlight weight, and incredibly smooth writing capabilities make the Pentonic the student favorite writing tool.',
-    image: '/src/assets/images/prod_pentonic_1781411654041.jpg'
+    image: '/images/prod_pentonic_1781411654041.jpg'
   },
   {
     id: 'pen-speed-new-radium-6pack',
@@ -206,7 +206,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 310,
     specs: ['Volume: 28 Liters', 'Material: Water-Resistant Polyester', 'Compartments: 3 main + 1 front organizer', 'Warranty: 1 Year International'],
     description: 'Ergonomic school bag designed for Primary to Middle school students. Features shoulder padding and a reinforced bottom base.',
-    image: '/src/assets/images/prod_backpack_1781411668307.jpg'
+    image: '/images/prod_backpack_1781411668307.jpg'
   },
   {
     id: 'bag-american-tourister-casual',
@@ -250,7 +250,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 3400,
     specs: ['Material: Premium Breathable Synthetic Leather', 'Sole: Soft Anti-skid PVC sole', 'Fastener: Easy Velcro for kids / Lace-up for elders', 'Odor-control inner lining'],
     description: 'Standard school uniform black shoe. Extremely comfortable, durable and easy to wash. A staple of student assemblies.',
-    image: '/src/assets/images/prod_batashoe_1781411681769.jpg'
+    image: '/images/prod_batashoe_1781411681769.jpg'
   },
   {
     id: 'shoe-liberty-canvas-white',
@@ -294,7 +294,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 2310,
     specs: ['Material: 304 High grade Stainless Steel', 'Insulation: Hot or cold for up to 24 hours', 'Leak proof rust free finish', 'Includes carry pouch'],
     description: 'Keep drinking water crystal-cold through exhausting summer class periods. Highly robust and impact resistant.',
-    image: '/src/assets/images/prod_milton_1781411698700.jpg'
+    image: '/images/prod_milton_1781411698700.jpg'
   },
   {
     id: 'e-celo-lunch-insulated',
@@ -322,7 +322,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 680,
     specs: ['Material: Heavy gauge metal case', 'Includes: Compass, Divider, Ruler, Protractor, Set Squares', 'Self-centering safety compass locks'],
     description: 'Fitted with highly accurate measurement parameters. The companion for geometry diagrams and engineering classes.',
-    image: '/src/assets/images/prod_geometry_1781411712803.jpg'
+    image: '/images/prod_geometry_1781411712803.jpg'
   },
   {
     id: 'e-camel-art-craft-supplies',

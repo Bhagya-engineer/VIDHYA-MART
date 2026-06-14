@@ -13,7 +13,7 @@ export default function Hero({ onStartCustomizing, onExploreProducts, onTalkToAI
       {/* Real student objects background image matching 60-70% visibility & high vibrancy */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
         <img
-          src="/src/assets/images/vidhya_hero_bg_1781412604890.jpg"
+          src="/images/vidhya_hero_bg_1781412604890.jpg"
           alt="Vidhya Modern Academic Student Essentials Background"
           className="w-full h-full object-cover opacity-65 lg:opacity-70 filter saturate-125 contrast-110"
           referrerPolicy="no-referrer"
