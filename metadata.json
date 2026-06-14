@@ -1,0 +1,6 @@
+{
+  "name": "VIDHYA MART",
+  "description": "A student-focused online platform providing educational essentials like textbooks, notebooks, school bags, shoes, stationery and more, featuring an interactive customization kit generator and an AI student support chatbot.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
