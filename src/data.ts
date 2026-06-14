@@ -48,7 +48,7 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 95,
     specs: ['Subjects: EVS, English, Maths, Hindi', 'Syllabus: CBSE/State Boards', 'Comes with online worksheets'],
     description: 'An all-in-one textbook pack for Class 5 Semester 1. Reduces bag weight and aggregates topics seamlessly.',
-    image: '/src/assets/images/prod_class5pack_1781412157397.jpg'
+    image: 'https://files.catbox.moe/i9d1ds.png'
   },
   {
     id: 'b-degree-engineering-math',
