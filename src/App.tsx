@@ -22,15 +22,15 @@ const INITIAL_TRACKING_ORDERS: Order[] = [
     id: "VIDHYA-TRACK-8820",
     items: [
       {
-        product: PRODUCTS.find(p => p.id === 'n-classmate-long-6pack') || PRODUCTS[5],
+        product: PRODUCTS.find(p => p.id === 'n-classmate-long-6') || PRODUCTS[0],
         quantity: 1
       },
       {
-        product: PRODUCTS.find(p => p.id === 'pen-pentonic-ball-10pack') || PRODUCTS[10],
+        product: PRODUCTS.find(p => p.id === 'pen-pentonic-blue') || PRODUCTS[16],
         quantity: 1
       }
     ],
-    total: 419,
+    total: 470,
     customerDetails: {
       name: "Akshat Reddy",
       email: "akshat.reddy@gmail.com",
@@ -49,15 +49,15 @@ const INITIAL_TRACKING_ORDERS: Order[] = [
     id: "VIDHYA-TRACK-4024",
     items: [
       {
-        product: PRODUCTS.find(p => p.id === 'b-class10-math') || PRODUCTS[0],
+        product: PRODUCTS.find(p => p.id === 'wt-borosil-flask') || PRODUCTS[6],
         quantity: 1
       },
       {
-        product: PRODUCTS.find(p => p.id === 'e-milton-thermosteel-bottle') || PRODUCTS[15],
+        product: PRODUCTS.find(p => p.id === 'b-skybags-marvel') || PRODUCTS[13],
         quantity: 1
       }
     ],
-    total: 894,
+    total: 1998,
     customerDetails: {
       name: "Meera Nair",
       email: "meera.nair@yahoo.com",
@@ -129,6 +129,12 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [priceRange, setPriceRange] = useState<number>(2000);
+  const [selectedBrand, setSelectedBrand] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<string>('default');
+
+  useEffect(() => {
+    setSelectedBrand('all');
+  }, [selectedCategory]);
 
   // Custom Kit Builder state
   const [kitClass, setKitClass] = useState('Class 10');
@@ -502,14 +508,35 @@ export default function App() {
     }
   };
 
+  // Extract unique brands for active category
+  const availableBrands = React.useMemo(() => {
+    const prods = selectedCategory === 'all' 
+      ? PRODUCTS 
+      : PRODUCTS.filter(p => p.category === selectedCategory);
+    
+    const brandsSet = new Set<string>();
+    prods.forEach(p => {
+      if (p.brand) brandsSet.add(p.brand);
+    });
+    return ['all', ...Array.from(brandsSet)];
+  }, [selectedCategory]);
+
   // Quick category items filter
   const filteredProducts = PRODUCTS.filter(p => {
     const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           (p.brand && p.brand.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                          (p.subcategory && p.subcategory.toLowerCase().includes(searchQuery.toLowerCase()));
+                          (p.subcategory && p.subcategory.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                          p.category.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || p.category === selectedCategory;
+    const matchesBrand = selectedBrand === 'all' || p.brand === selectedBrand;
     const matchesPrice = p.price <= priceRange;
-    return matchesSearch && matchesCategory && matchesPrice;
+    return matchesSearch && matchesCategory && matchesBrand && matchesPrice;
+  }).sort((a, b) => {
+    if (sortBy === 'price-low-to-high') return a.price - b.price;
+    if (sortBy === 'price-high-to-low') return b.price - a.price;
+    if (sortBy === 'rating') return b.rating - a.rating;
+    if (sortBy === 'popular') return b.reviewsCount - a.reviewsCount;
+    return 0; // default (no change in sorting)
   });
 
   return (
@@ -856,19 +883,52 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Price range selector */}
-              <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 pt-1 border-t border-slate-100">
-                <span className="text-xs font-bold text-slate-500 shrink-0">Filter by Maximum Price:</span>
-                <input
-                  type="range"
-                  min="50"
-                  max="2500"
-                  step="50"
-                  value={priceRange}
-                  onChange={(e) => setPriceRange(Number(e.target.value))}
-                  className="w-full max-w-xs accent-blue-600"
-                />
-                <span className="text-xs font-bold text-blue-600">Under ₹{priceRange}</span>
+              {/* Price range, Brand & Sort controls */}
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pt-4 border-t border-slate-100">
+                <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                  <span className="text-xs font-bold text-slate-500 shrink-0">Filter by Price:</span>
+                  <input
+                    type="range"
+                    min="50"
+                    max="2500"
+                    step="50"
+                    value={priceRange}
+                    onChange={(e) => setPriceRange(Number(e.target.value))}
+                    className="w-full max-w-xs accent-blue-600"
+                  />
+                  <span className="text-xs font-bold text-blue-600">Under ₹{priceRange}</span>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs font-bold text-slate-500">Brand / Publisher:</span>
+                    <select
+                      value={selectedBrand}
+                      onChange={(e) => setSelectedBrand(e.target.value)}
+                      className="text-xs p-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 text-slate-700 font-semibold cursor-pointer"
+                    >
+                      <option value="all">All Brands ({availableBrands.length - 1} available)</option>
+                      {availableBrands.filter(b => b !== 'all').map((brand) => (
+                        <option key={brand} value={brand}>{brand}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs font-bold text-slate-500">Sort By:</span>
+                    <select
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value)}
+                      className="text-xs p-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 text-slate-700 font-semibold cursor-pointer"
+                    >
+                      <option value="default">Featured & Relevant</option>
+                      <option value="price-low-to-high">Price: Low to High</option>
+                      <option value="price-high-to-low">Price: High to Low</option>
+                      <option value="rating">Top Rated Students Choice</option>
+                      <option value="popular">Popularity & Review Volume</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
 

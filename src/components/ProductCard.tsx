@@ -136,10 +136,23 @@ export default function ProductCard({
 
           <div>
             {/* Pricing Section */}
-            <div className="flex items-baseline space-x-2 mt-1 mb-3.5">
-              <span className="text-base font-extrabold text-slate-900">₹{product.price}</span>
-              {product.originalPrice && (
-                <span className="text-xs text-slate-400 line-through">₹{product.originalPrice}</span>
+            <div className="flex items-center justify-between mt-1 mb-3.5">
+              <div className="flex items-baseline space-x-2">
+                <span className="text-base font-extrabold text-slate-900">₹{product.price}</span>
+                {product.originalPrice && (
+                  <span className="text-xs text-slate-400 line-through">₹{product.originalPrice}</span>
+                )}
+              </div>
+              {product.stockStatus && (
+                <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md ${
+                  product.stockStatus === 'In Stock' 
+                    ? 'bg-emerald-50 text-emerald-700' 
+                    : product.stockStatus === 'Low Stock' 
+                      ? 'bg-amber-50 text-amber-700' 
+                      : 'bg-rose-50 text-rose-700'
+                }`}>
+                  {product.stockStatus}
+                </span>
               )}
             </div>
 
@@ -229,6 +242,21 @@ export default function ProductCard({
                       <span className="text-xs text-slate-400 line-through">M.R.P.: ₹{product.originalPrice}</span>
                     )}
                   </div>
+
+                  {product.stockStatus && (
+                    <div className="flex items-center space-x-2 mt-1 py-1">
+                      <span className="text-xs text-slate-500 font-medium">Availability:</span>
+                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide border ${
+                        product.stockStatus === 'In Stock' 
+                          ? 'bg-emerald-50 text-emerald-700 border-emerald-100' 
+                          : product.stockStatus === 'Low Stock' 
+                            ? 'bg-amber-50 text-amber-700 border-amber-100' 
+                            : 'bg-rose-50 text-rose-700 border-rose-100'
+                      }`}>
+                        {product.stockStatus}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -250,6 +278,34 @@ export default function ProductCard({
                   ))}
                 </div>
               </div>
+
+              {/* Verified Product Reviews */}
+              {product.reviews && product.reviews.length > 0 && (
+                <div className="space-y-2.5 pt-4 border-t border-slate-100">
+                  <h4 className="text-sm font-bold text-slate-800">Verified Customer Reviews</h4>
+                  <div className="space-y-2">
+                    {product.reviews.map((rev) => (
+                      <div key={rev.id} className="bg-slate-50/50 p-3 rounded-xl border border-slate-100 space-y-1">
+                        <div className="flex justify-between items-center">
+                          <span className="text-xs font-bold text-slate-700">{rev.userName}</span>
+                          <span className="text-[10px] text-slate-400">{rev.date}</span>
+                        </div>
+                        <div className="flex items-center space-x-0.5">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star 
+                              key={star} 
+                              className={`w-3 h-3 fill-current ${
+                                star <= rev.rating ? 'text-amber-500' : 'text-slate-200'
+                              }`} 
+                            />
+                          ))}
+                        </div>
+                        <p className="text-xs text-slate-600 leading-relaxed italic">"{rev.comment}"</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Modal Footer */}

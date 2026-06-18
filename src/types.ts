@@ -11,6 +11,15 @@ export interface Product {
   specs: string[];
   description: string;
   image: string; // lucide icon identifier or a path
+  stockStatus?: 'In Stock' | 'Low Stock' | 'Out of Stock';
+  discountPercent?: number;
+  reviews?: {
+    id: string;
+    userName: string;
+    rating: number;
+    comment: string;
+    date: string;
+  }[];
 }
 
 export interface CartItem {
